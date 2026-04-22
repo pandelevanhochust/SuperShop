@@ -1,0 +1,12 @@
+d:\CODIng\web-design\SuperShop\BuildingBlocks\BuildingBlocks\bin\Debug\net10.0\BuildingBlocks.deps.json
+d:\CODIng\web-design\SuperShop\BuildingBlocks\BuildingBlocks\bin\Debug\net10.0\BuildingBlocks.dll
+d:\CODIng\web-design\SuperShop\BuildingBlocks\BuildingBlocks\bin\Debug\net10.0\BuildingBlocks.pdb
+d:\CODIng\web-design\SuperShop\BuildingBlocks\BuildingBlocks\obj\Debug\net10.0\BuildingBlocks.csproj.AssemblyReference.cache
+d:\CODIng\web-design\SuperShop\BuildingBlocks\BuildingBlocks\obj\Debug\net10.0\BuildingBlocks.GeneratedMSBuildEditorConfig.editorconfig
+d:\CODIng\web-design\SuperShop\BuildingBlocks\BuildingBlocks\obj\Debug\net10.0\BuildingBlocks.AssemblyInfoInputs.cache
+d:\CODIng\web-design\SuperShop\BuildingBlocks\BuildingBlocks\obj\Debug\net10.0\BuildingBlocks.AssemblyInfo.cs
+d:\CODIng\web-design\SuperShop\BuildingBlocks\BuildingBlocks\obj\Debug\net10.0\BuildingBlocks.csproj.CoreCompileInputs.cache
+d:\CODIng\web-design\SuperShop\BuildingBlocks\BuildingBlocks\obj\Debug\net10.0\BuildingBlocks.dll
+d:\CODIng\web-design\SuperShop\BuildingBlocks\BuildingBlocks\obj\Debug\net10.0\refint\BuildingBlocks.dll
+d:\CODIng\web-design\SuperShop\BuildingBlocks\BuildingBlocks\obj\Debug\net10.0\BuildingBlocks.pdb
+d:\CODIng\web-design\SuperShop\BuildingBlocks\BuildingBlocks\obj\Debug\net10.0\ref\BuildingBlocks.dll

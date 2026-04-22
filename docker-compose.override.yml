@@ -1,0 +1,139 @@
+
+services:
+  catalogdb:
+    container_name: catalogdb
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=CatalogDb
+    restart: always
+    ports:
+      - "5431:5432"
+    volumes:
+      - postgres_catalog:/var/lib/postgresql
+
+  cartdb:
+    container_name: cartdb
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=CartDb
+    restart: always
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_cart:/var/lib/postgresql
+
+  discountdb:
+    container_name: discountdb
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=DiscountDb
+    restart: always
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres_discount:/var/lib/postgresql
+
+  orderdb:
+    container_name: orderdb
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=OrderDb
+    restart: always
+    ports:
+      - "5435:5432"
+    volumes:
+      - postgres_order:/var/lib/postgresql
+
+  distributedcache:
+    container_name: distributedcache
+    restart: always
+    ports:
+      - "6380:6379"
+
+  messagebroker:
+    container_name: messagebroker
+    hostname: tlv
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    restart: always
+    ports:
+      - "35672:5672"
+      - "15673:15672"
+
+  # catalog.api:
+  #   environment:
+  #     - ASPNETCORE_ENVIRONMENT=Development
+  #     - ASPNETCORE_HTTP_PORTS=8080
+  #     - ASPNETCORE_HTTPS_PORTS=8081
+  #     - ConnectionStrings__Database=Host=catalogdb;Port=5432;Database=CatalogDb;Username=postgres;Password=postgres;Include Error Detail=true
+  #   depends_on:
+  #     - catalogdb
+  #   ports:
+  #     - "6000:8080"
+  #     - "6060:8081"
+  #   volumes:
+  #     - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+  #     - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+
+  # cart.api:
+  #   environment:
+  #     - ASPNETCORE_ENVIRONMENT=Development
+  #     - ASPNETCORE_HTTP_PORTS=8080
+  #     - ASPNETCORE_HTTPS_PORTS=8081
+  #     - ConnectionStrings__Database=Host=cartdb;Port=5432;Database=CartDb;Username=postgres;Password=postgres;Include Error Detail=true
+  #     - ConnectionStrings__Redis=distributedcache:6379
+  #     - GrpcSettings__DiscountUrl=http://discount.grpc:8080
+  #     - MessageBroker__Host=amqp://tlv:5672
+  #     - MessageBroker__UserName=guest
+  #     - MessageBroker__Password=guest
+  #   depends_on:
+  #     - cartdb
+  #     - distributedcache
+  #     - discount.grpc
+  #     - messagebroker
+  #   ports:
+  #     - "6001:8080"
+  #     - "6061:8081"
+  #   volumes:
+  #     - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+  #     - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+
+  # discount.grpc:
+  #   environment:
+  #     - ASPNETCORE_ENVIRONMENT=Development
+  #     - ASPNETCORE_HTTP_PORTS=8080
+  #     - ASPNETCORE_HTTPS_PORTS=8081
+  #     - ConnectionStrings__Database=Host=discountdb;Port=5432;Database=DiscountDb;Username=postgres;Password=postgres
+  #   depends_on:
+  #     - discountdb
+  #   ports:
+  #     - "6002:8080"
+  #     - "6062:8081"
+  #   volumes:
+  #     - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+  #     - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+
+  # ordering.api:
+  #   environment:
+  #     - ASPNETCORE_ENVIRONMENT=Development
+  #     - ASPNETCORE_HTTP_PORTS=8080
+  #     - ASPNETCORE_HTTPS_PORTS=8081
+  #     - ConnectionStrings__Database=Host=orderdb;Port=5432;Database=OrderDb;Username=postgres;Password=postgres
+  #     - MessageBroker__Host=amqp://tlv:5672
+  #     - MessageBroker__UserName=guest
+  #     - MessageBroker__Password=guest
+  #     - FeatureManagement__OrderFullfilment=false
+  #   depends_on:
+  #     - orderdb
+  #     - messagebroker
+  #   ports:
+  #     - "6003:8080"
+  #     - "6063:8081"
+  #   volumes:
+  #     - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+  #     - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro

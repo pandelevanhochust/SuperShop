@@ -1,0 +1,3 @@
+D:\CODIng\web-design\SuperShop\Services\Basket\obj\Debug\net8.0\Basket.API.csproj.AssemblyReference.cache
+D:\CODIng\web-design\SuperShop\Services\Basket\obj\Debug\net8.0\rpswa.dswa.cache.json
+D:\CODIng\web-design\SuperShop\Services\Basket\obj\Debug\net8.0\Basket.API.GeneratedMSBuildEditorConfig.editorconfig
