@@ -31,3 +31,4 @@ D:\CODIng\web-design\SuperShop\test\Testing\obj\Debug\net10.0\refint\Testing.dll
 D:\CODIng\web-design\SuperShop\test\Testing\obj\Debug\net10.0\Testing.pdb
 D:\CODIng\web-design\SuperShop\test\Testing\obj\Debug\net10.0\Testing.genruntimeconfig.cache
 D:\CODIng\web-design\SuperShop\test\Testing\obj\Debug\net10.0\ref\Testing.dll
+D:\CODIng\web-design\SuperShop\test\Testing\obj\Debug\net10.0\Testing.sourcelink.json

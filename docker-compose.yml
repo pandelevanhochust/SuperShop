@@ -1,6 +1,6 @@
 
 services:
-  catalogdb:
+  productdb:
     image: postgres
 
   cartdb:
@@ -18,11 +18,11 @@ services:
   messagebroker:
     image: rabbitmq:management
 
-  # catalog.api:
-  #   image: ${DOCKER_REGISTRY-}catalogapi
+  # product.api:
+  #   image: ${DOCKER_REGISTRY-}productapi
   #   build:
   #     context: .
-  #     dockerfile: Services/Catalog/Dockerfile
+  #     dockerfile: Services/Product/Dockerfile
 
   # cart.api:
   #   image: ${DOCKER_REGISTRY-}cartapi
@@ -43,7 +43,7 @@ services:
   #     dockerfile: Services/Ordering/Ordering.API/Dockerfile
 
 volumes:
-  postgres_catalog:
+  postgres_product:
   postgres_cart:
   postgres_discount:
   postgres_order:
