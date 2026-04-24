@@ -7,6 +7,11 @@ public class CachedCartRepository
     (ICartRepository repository, IDistributedCache cache) 
     : ICartRepository
 {
+    private readonly DistributedCacheEntryOptions _cacheOptions = new()
+    {   
+        AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(30)
+    };
+        
     public async Task<ShoppingCart> GetCart(string userName, CancellationToken cancellationToken = default)
     {
         var cachedCart = await cache.GetStringAsync(userName, cancellationToken);
@@ -14,7 +19,7 @@ public class CachedCartRepository
             return JsonSerializer.Deserialize<ShoppingCart>(cachedCart)!;
 
         var cart = await repository.GetCart(userName, cancellationToken);
-        await cache.SetStringAsync(userName, JsonSerializer.Serialize(cart), cancellationToken);
+        await cache.SetStringAsync(userName, JsonSerializer.Serialize(cart), _cacheOptions, cancellationToken);
         return cart;
     }
 
@@ -22,7 +27,7 @@ public class CachedCartRepository
     {
         await repository.StoreCart(cart, cancellationToken);
 
-        await cache.SetStringAsync(cart.UserName, JsonSerializer.Serialize(cart), cancellationToken);
+        await cache.SetStringAsync(cart.UserName, JsonSerializer.Serialize(cart), _cacheOptions, cancellationToken);
 
         return cart;
     }
